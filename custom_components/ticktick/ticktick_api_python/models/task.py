@@ -69,26 +69,38 @@ class Task(CheckListItem):
     def toJSON(self):
         """Serialize Task to json."""
 
-        def filter_none(d):
-            """Filter out None values from dictionary."""
-            return {
-                k: _handle_datetime(v)
-                for k, v in d.items()
-                if v is not None and v != []
-            }
-
-        @staticmethod
         def _handle_datetime(value):
-            """Handle special cases for JSON serialization."""
+            # Datetime → ISO without colon in TZ; Enum → .value; pass others through
             if isinstance(value, datetime):
-                # Removing `:` from the timezone information as TickTick doesnt accept them
-                modified_date = value.isoformat().rsplit(":", 1)
-                return modified_date[0] + modified_date[1]
+                s = value.isoformat()
+                # strip last colon in timezone offset, e.g. +10:00 -> +1000
+                if len(s) >= 6 and s[-3] == ":":
+                    s = s[:-3] + s[-2:]
+                return s
             if isinstance(value, Enum):
                 return value.value
             return value
 
-        return json.dumps(filter_none(self.__dict__), sort_keys=True)
+        def filter_none(d: dict):
+            return {k: _handle_datetime(v) for k, v in d.items() if v is not None and v != []}
+
+        d = filter_none(self.__dict__)
+
+        # Convert nested checklist items to plain dicts (and filter Nones there too)
+        if "items" in d and isinstance(d["items"], list):
+            def item_to_dict(item):
+                di = filter_none(item.__dict__)
+                if "status" in di:
+                    # For checklist items TickTick expects 0 (normal) or 1 (completed)
+                    di["status"] = 1 if int(di["status"]) else 0
+                return di
+            d["items"] = [item_to_dict(i) for i in d["items"]]
+
+        # For the parent task, ensure status domain is 0/2 (TickTick quirk)
+        if "status" in d:
+            d["status"] = 2 if int(d["status"]) else 0
+
+        return json.dumps(d, sort_keys=True)
 
     @classmethod
     def get_arg_names(cls) -> list[str]:
