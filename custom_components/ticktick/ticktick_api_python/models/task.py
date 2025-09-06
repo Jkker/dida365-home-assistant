@@ -68,21 +68,24 @@ class Task(CheckListItem):
 
     def toJSON(self):
         """Serialize Task to json."""
+        
+        def filter_none(d):
+            """Filter out None values from dictionary."""
+            return {
+                k: _handle_datetime(v)
+                for k, v in d.items()
+                if v is not None and v != []
+            }
 
         def _handle_datetime(value):
             # Datetime → ISO without colon in TZ; Enum → .value; pass others through
             if isinstance(value, datetime):
-                s = value.isoformat()
-                # strip last colon in timezone offset, e.g. +10:00 -> +1000
-                if len(s) >= 6 and s[-3] == ":":
-                    s = s[:-3] + s[-2:]
-                return s
+                # Removing `:` from the timezone information as TickTick doesnt accept them
+                modified_date = value.isoformat().rsplit(":", 1)
+                return modified_date[0] + modified_date[1]
             if isinstance(value, Enum):
                 return value.value
             return value
-
-        def filter_none(d: dict):
-            return {k: _handle_datetime(v) for k, v in d.items() if v is not None and v != []}
 
         d = filter_none(self.__dict__)
 
