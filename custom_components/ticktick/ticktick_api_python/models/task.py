@@ -68,7 +68,7 @@ class Task(CheckListItem):
 
     def toJSON(self):
         """Serialize Task to json."""
-        
+
         def filter_none(d):
             """Filter out None values from dictionary."""
             return {
@@ -77,8 +77,9 @@ class Task(CheckListItem):
                 if v is not None and v != []
             }
 
+        @staticmethod
         def _handle_datetime(value):
-            # Datetime → ISO without colon in TZ; Enum → .value; pass others through
+            """Handle special cases for JSON serialization."""
             if isinstance(value, datetime):
                 # Removing `:` from the timezone information as TickTick doesnt accept them
                 modified_date = value.isoformat().rsplit(":", 1)
