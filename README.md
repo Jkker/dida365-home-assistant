@@ -1,8 +1,8 @@
 # Home Assistant Dida365 Integration
 
 ![Static Badge](https://img.shields.io/badge/made%20with-fun-green?style=for-the-badge)‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
-![GitHub Repo stars](https://img.shields.io/github/stars/Hantick/ticktick-home-assistant?style=for-the-badge&color=%23AFB0CC)
-![GitHub Release](https://img.shields.io/github/v/release/Hantick/ticktick-home-assistant?style=for-the-badge&color=%231CB00A)
+![GitHub Repo stars](https://img.shields.io/github/stars/Jkker/dida365-home-assistant?style=for-the-badge&color=%23AFB0CC)
+![GitHub Release](https://img.shields.io/github/v/release/Jkker/dida365-home-assistant?style=for-the-badge&color=%231CB00A)
 
 Integration implements [Dida365 Open API](https://developer.dida365.com/docs#/openapi) with support for [To-do list](https://www.home-assistant.io/integrations/todo/) entities and exposes it as services in Home Assistant, allowing you to manage your tasks and projects programmatically 😎
 

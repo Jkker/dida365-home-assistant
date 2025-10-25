@@ -1,7 +1,7 @@
 """TickTick API Client."""
 
 from aiohttp import ClientResponse, ClientSession
-from custom_components.ticktick.const import (
+from custom_components.dida365.const import (
     COMPLETE_TASK,
     CREATE_TASK,
     DELETE_TASK,

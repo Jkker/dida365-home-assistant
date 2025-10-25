@@ -6,7 +6,7 @@ import logging
 from typing import Any, TypeVar
 from zoneinfo import ZoneInfo
 
-from custom_components.ticktick.ticktick_api_python.models.task import (
+from custom_components.dida365.ticktick_api_python.models.task import (
     Task,
     TaskPriority,
 )

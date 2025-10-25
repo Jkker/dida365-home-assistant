@@ -1,19 +1,19 @@
 {
-  "domain": "ticktick",
-  "name": "TickTick",
+  "domain": "dida365",
+  "name": "Dida365",
   "codeowners": [
-    "@Hantick"
+    "@Jkker"
   ],
   "config_flow": true,
   "dependencies": [
     "application_credentials",
     "http"
   ],
-  "documentation": "https://github.com/Hantick/ticktick-home-assistant",
+  "documentation": "https://github.com/Jkker/dida365-home-assistant",
   "homekit": {},
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/Hantick/ticktick-home-assistant/issues",
+  "issue_tracker": "https://github.com/Jkker/dida365-home-assistant/issues",
   "requirements": [],
   "ssdp": [],
   "version": "2.1.3",

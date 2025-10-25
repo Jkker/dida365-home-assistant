@@ -2,8 +2,8 @@ import asyncio
 from typing import Any
 from datetime import datetime
 
-from custom_components.ticktick.coordinator import TickTickCoordinator
-from custom_components.ticktick.ticktick_api_python.models.task import Task, TaskStatus
+from custom_components.dida365.coordinator import TickTickCoordinator
+from custom_components.dida365.ticktick_api_python.models.task import Task, TaskStatus
 
 from homeassistant.components.todo import (
     TodoItem,

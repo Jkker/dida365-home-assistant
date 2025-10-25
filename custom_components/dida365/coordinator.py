@@ -4,11 +4,11 @@ import asyncio
 from datetime import timedelta
 import logging
 
-from custom_components.ticktick.ticktick_api_python.models.project import Project
-from custom_components.ticktick.ticktick_api_python.models.project_with_tasks import (
+from custom_components.dida365.ticktick_api_python.models.project import Project
+from custom_components.dida365.ticktick_api_python.models.project_with_tasks import (
     ProjectWithTasks,
 )
-from custom_components.ticktick.ticktick_api_python.ticktick_api import (
+from custom_components.dida365.ticktick_api_python.ticktick_api import (
     TickTickAPIClient,
 )
 
