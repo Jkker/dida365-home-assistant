@@ -1,10 +1,10 @@
-"""Constants for the TickTick Integration integration."""
+"""Constants for the Dida365 Integration integration."""
 
-DOMAIN = "ticktick"
+DOMAIN = "dida365"
 
-OAUTH2_AUTHORIZE = "https://ticktick.com/oauth/authorize"
-OAUTH2_TOKEN = "https://ticktick.com/oauth/token"
-TICKTICK_HOST = "api.ticktick.com"
+OAUTH2_AUTHORIZE = f"https://{DOMAIN}.com/oauth/authorize"
+OAUTH2_TOKEN = f"https://{DOMAIN}.com/oauth/token"
+TICKTICK_HOST = f"api.{DOMAIN}.com"
 API = "open/v1"
 BASE_API_URL = f"{TICKTICK_HOST}/{API}"
 
